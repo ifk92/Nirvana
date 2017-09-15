@@ -7,6 +7,8 @@
 <h2>Add a Post</h2>
 @using (Html.BeginForm("Create", "Posts"))
 {
+    @* Preventing CRSF Attack *@
+    @Html.AntiForgeryToken()
 
     <div class="form-group">
         @Html.LabelFor(m => m.Text)

@@ -27,6 +27,7 @@ namespace WebAppMVC.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(PostFormViewModel viewModel)
         {
             //tells you if any model errors have been added to ModelState
