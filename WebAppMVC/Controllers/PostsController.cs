@@ -29,6 +29,13 @@ namespace WebAppMVC.Controllers
         [HttpPost]
         public ActionResult Create(PostFormViewModel viewModel)
         {
+            //tells you if any model errors have been added to ModelState
+            if (!ModelState.IsValid)
+            {
+                viewModel.Categories = _context.Categories.ToList();
+                return View("Create", viewModel);
+
+            }
 
             var post = new Post
             {
