@@ -191,16 +191,66 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709080739131_intialmodel.cs" />
+    <Compile Include="Migrations\201709080739131_intialmodel.Designer.cs">
+      <DependentUpon>201709080739131_intialmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709080745537_addcategorie.cs" />
+    <Compile Include="Migrations\201709080745537_addcategorie.Designer.cs">
+      <DependentUpon>201709080745537_addcategorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709081007523_foreigncategorie.cs" />
+    <Compile Include="Migrations\201709081007523_foreigncategorie.Designer.cs">
+      <DependentUpon>201709081007523_foreigncategorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709081032419_PopulateCategoriesTable.cs" />
+    <Compile Include="Migrations\201709081032419_PopulateCategoriesTable.Designer.cs">
+      <DependentUpon>201709081032419_PopulateCategoriesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709141815555_intialmodel1.cs" />
+    <Compile Include="Migrations\201709141815555_intialmodel1.Designer.cs">
+      <DependentUpon>201709141815555_intialmodel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709141827485_maj.cs" />
+    <Compile Include="Migrations\201709141827485_maj.Designer.cs">
+      <DependentUpon>201709141827485_maj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709141834059_addcategorie1.cs" />
+    <Compile Include="Migrations\201709141834059_addcategorie1.Designer.cs">
+      <DependentUpon>201709141834059_addcategorie1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709141837224_categorie.cs" />
+    <Compile Include="Migrations\201709141837224_categorie.Designer.cs">
+      <DependentUpon>201709141837224_categorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709141840006_filldb.cs" />
+    <Compile Include="Migrations\201709141840006_filldb.Designer.cs">
+      <DependentUpon>201709141840006_filldb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709151221243_AddForeignKeyPropoertiesToPost.cs" />
+    <Compile Include="Migrations\201709151221243_AddForeignKeyPropoertiesToPost.Designer.cs">
+      <DependentUpon>201709151221243_AddForeignKeyPropoertiesToPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\PostFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Nirvana.mdf" />
+    <Content Include="App_Data\Nirvana_log.ldf">
+      <DependentUpon>Nirvana.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -257,10 +307,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Posts\Create.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -275,6 +324,38 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709080739131_intialmodel.resx">
+      <DependentUpon>201709080739131_intialmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709080745537_addcategorie.resx">
+      <DependentUpon>201709080745537_addcategorie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709081007523_foreigncategorie.resx">
+      <DependentUpon>201709081007523_foreigncategorie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709081032419_PopulateCategoriesTable.resx">
+      <DependentUpon>201709081032419_PopulateCategoriesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709141815555_intialmodel1.resx">
+      <DependentUpon>201709141815555_intialmodel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709141827485_maj.resx">
+      <DependentUpon>201709141827485_maj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709141834059_addcategorie1.resx">
+      <DependentUpon>201709141834059_addcategorie1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709141837224_categorie.resx">
+      <DependentUpon>201709141837224_categorie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709141840006_filldb.resx">
+      <DependentUpon>201709141840006_filldb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709151221243_AddForeignKeyPropoertiesToPost.resx">
+      <DependentUpon>201709151221243_AddForeignKeyPropoertiesToPost.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
