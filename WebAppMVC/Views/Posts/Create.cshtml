@@ -7,12 +7,15 @@
 <h2>Add a Post</h2>
 @using (Html.BeginForm("Create", "Posts"))
 {
+
+    <p class="alert alert-info"> All fields are <strong>required</strong></p>
+
     @* Preventing CRSF Attack *@
     @Html.AntiForgeryToken()
 
     <div class="form-group">
         @Html.LabelFor(m => m.Text)
-        @Html.TextAreaFor(m => m.Text, new { @class = "form-control" })
+        @Html.TextAreaFor(m => m.Text, new { @class = "form-control", autofocus="autofocus" })
         @Html.ValidationMessageFor(m => m.Text)
     </div>
 
