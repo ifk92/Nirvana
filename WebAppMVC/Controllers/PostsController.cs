@@ -42,6 +42,7 @@ namespace WebAppMVC.Controllers
             {
                 UtilisateurId = User.Identity.GetUserId(),
                 Text = viewModel.Text,
+                Date = viewModel.CurrentTime(),
                 CategorieId = viewModel.Categorie,
 
             };

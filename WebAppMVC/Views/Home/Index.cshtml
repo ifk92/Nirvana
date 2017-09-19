@@ -4,8 +4,40 @@
 }
 
 <ul>
+
+
+
     @foreach (var post in Model)
     {
-        <li>@post.Text - @post.Utilisateur.Name</li>
-    }
+        string tps;
+
+
+
+        if (@DateTime.Now.Subtract(@post.Date).Minutes < 60)
+        {
+            tps = @DateTime.Now.Subtract(@post.Date).Minutes.ToString() + " min";
+        }
+        else
+        {
+            if (@DateTime.Now.Subtract(@post.Date).Minutes > 60*24)
+            {
+                tps = @DateTime.Now.Subtract(@post.Date).Days.ToString() + " j";
+            }
+            else
+            {
+                tps = @DateTime.Now.Subtract(@post.Date).Hours.ToString() + " h";
+            }
+
+        }
+
+        @*<li>@post.Text - @post.Utilisateur.Name - @tps</li>*@
+
+        <li>
+            
+            div.nom+div.date            
+
+        </li>
+
+
+        }
 </ul>
