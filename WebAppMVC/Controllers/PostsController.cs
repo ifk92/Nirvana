@@ -48,6 +48,7 @@ namespace WebAppMVC.Controllers
             };
 
             _context.Posts.Add(post);
+
             _context.SaveChangesAsync();
 
             return RedirectToAction("Index","Home");
