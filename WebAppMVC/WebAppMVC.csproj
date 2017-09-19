@@ -292,7 +292,12 @@
     <Compile Include="Migrations\201709181244554_adddatetopost.Designer.cs">
       <DependentUpon>201709181244554_adddatetopost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709191432197_AddFavorite.cs" />
+    <Compile Include="Migrations\201709191432197_AddFavorite.Designer.cs">
+      <DependentUpon>201709191432197_AddFavorite.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Favorite.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -419,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709181244554_adddatetopost.resx">
       <DependentUpon>201709181244554_adddatetopost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709191432197_AddFavorite.resx">
+      <DependentUpon>201709191432197_AddFavorite.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
