@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201709151221243_AddForeignKeyPropoertiesToPost.Designer.cs">
       <DependentUpon>201709151221243_AddForeignKeyPropoertiesToPost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709171635483_AddNameToApplicationUser.cs" />
+    <Compile Include="Migrations\201709171635483_AddNameToApplicationUser.Designer.cs">
+      <DependentUpon>201709171635483_AddNameToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -357,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709151221243_AddForeignKeyPropoertiesToPost.resx">
       <DependentUpon>201709151221243_AddForeignKeyPropoertiesToPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709171635483_AddNameToApplicationUser.resx">
+      <DependentUpon>201709171635483_AddNameToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
