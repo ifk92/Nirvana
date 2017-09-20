@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WebAppMVC.Models.Post>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<table>
+@using (Html.BeginForm("Delete", "MyPosts"))
+{  @* Preventing CRSF Attack *@
+    @Html.AntiForgeryToken()
+
+    <tr class="form-group"> </tr>
+        foreach (var post in Model)
+        {
+            <tr>
+                <td> @post.Text </td>
+                <td> <button type="submit" name="Delete" class="btn btn-primary">Delete</button> </td>
+            </tr>
+        }
+        }
+   
+</table>
