@@ -13,6 +13,7 @@ namespace WebAppMVC.Models
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
+        public byte[] UserPhoto { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
