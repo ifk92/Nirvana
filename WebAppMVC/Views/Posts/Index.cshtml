@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebAppMVC.Models.Post>
+@{
+    ViewBag.Title = "My Home Page";
+}
+
+
+<h2>All your posts, enjoy</h2>
+@using (Html.BeginForm("Delete", "Posts"))
+{
+
+
+    @* Preventing CRSF Attack *@
+    @Html.AntiForgeryToken()
+
+    @*<ul>
+        @foreach (var post in Model)
+        {
+            <li>@post.Text - <button type="submit" class="btn btn-primary">Delete</button></li>
+        }
+    </ul>*@
+    <div>
+        @foreach (var item in Model)
+        {
+            <div>@item.Text - @item.Categorie</div>
+        }
+               @*  ViewData["myPosts"] as IEnumerable<WebAppMVC.Models.Post> @ViewData["myPosts"] <button type="submit" class="btn btn-primary">Delete</button>*@
+    </div>
+
+
+
+
+}
+
+@* Enabling client side validation *@
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

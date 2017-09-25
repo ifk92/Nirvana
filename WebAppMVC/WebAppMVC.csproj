@@ -191,6 +191,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyPostsController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -317,9 +318,15 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Posts\Create.cshtml" />
+<!--<<<<<< Suvé2
+    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\MyPosts\Index.cshtml" />
+    <Content Include="Views\MyPosts\Delete.cshtml" />
+=======-->
     <Content Include="Views\Manage\ProfileAdmin.cshtml" />
     <Content Include="Views\Shared\_PartialLayoutPage.cshtml" />
     <Content Include="Views\Manage\ChangeProfilePic.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Categories\" />
