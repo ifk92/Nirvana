@@ -61,6 +61,8 @@ namespace WebAppMVC.Controllers
             return View();
         }
 
+        
+
         //
         // POST: /Account/Login
         [HttpPost]
@@ -151,7 +153,21 @@ namespace WebAppMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                // To convert the user uploaded Photo as Byte Array before save to DB
+                byte[] imageData = null;
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
+
+                    using (var binary = new System.IO.BinaryReader(poImgFile.InputStream))
+                    {
+                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+                    }
+                }
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email,Name=model.Name };
+                user.UserPhoto = imageData;
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

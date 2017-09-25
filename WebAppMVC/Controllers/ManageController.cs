@@ -20,6 +20,12 @@ namespace WebAppMVC.Controllers
         {
         }
 
+        public ActionResult ProfileAdmin(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
@@ -103,7 +109,7 @@ namespace WebAppMVC.Controllers
         // GET: /Manage/AddPhoneNumber
         public ActionResult AddPhoneNumber()
         {
-            return View();
+            return PartialView();
         }
 
         //
@@ -129,6 +135,81 @@ namespace WebAppMVC.Controllers
             }
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
+
+        //
+        // GET: /Manage/ChangeProfilePic
+        public ActionResult ChangeProfilePic()
+        {
+            return View();
+        }
+
+        
+        //
+        // POST: /Manage/ChangeProfilePic
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeProfilePic(ChangeProfilePicViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            // To convert the user uploaded Photo as Byte Array before save to DB
+            byte[] imageData = null;
+            if (Request.Files.Count > 0)
+            {
+                HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
+
+                using (var binary = new System.IO.BinaryReader(poImgFile.InputStream))
+                {
+                    imageData = binary.ReadBytes(poImgFile.ContentLength);
+                }
+            }
+            // get EF Database (maybe different way in your applicaiton)
+            //var db = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+
+            // find the user. I am skipping validations and other checks.
+
+           /* var userid = User.Identity.GetUserId();
+            var user = HttpContext.GetOwinContext().Get<ApplicationDbContext>().Users.Where(x => x.Id == userid).FirstOrDefault();*/
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            if (user != null)
+            {
+                user.UserPhoto = imageData;
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+            }
+            return RedirectToAction("Index", new { Message = "Photo de Profil Modifiée" });
+
+            /*AddErrors(result);
+            return View(model);*/
+        }
+
+
+        //
+        // POST: /Manage/ChangePassword
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+            if (result.Succeeded)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("ProfileAdmin", new { Message = ManageMessageId.ChangePasswordSuccess });
+            }
+            AddErrors(result);
+            return View(model);
+        }
+
+
 
         //
         // POST: /Manage/EnableTwoFactorAuthentication
@@ -217,32 +298,11 @@ namespace WebAppMVC.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
-            return View();
+             return View();
+            //return RedirectToAction("ProfileAdmin");
         }
 
-        //
-        // POST: /Manage/ChangePassword
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
-            if (result.Succeeded)
-            {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                if (user != null)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
-            }
-            AddErrors(result);
-            return View(model);
-        }
+        
 
         //
         // GET: /Manage/SetPassword

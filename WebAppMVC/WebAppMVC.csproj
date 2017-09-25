@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201709171635483_AddNameToApplicationUser.Designer.cs">
       <DependentUpon>201709171635483_AddNameToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709201238395_ProfilePic.cs" />
+    <Compile Include="Migrations\201709201238395_ProfilePic.Designer.cs">
+      <DependentUpon>201709201238395_ProfilePic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -262,6 +266,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\chat.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -313,9 +318,15 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Posts\Create.cshtml" />
+<!--<<<<<< Suvé2
     <Content Include="Views\Posts\Index.cshtml" />
     <Content Include="Views\MyPosts\Index.cshtml" />
     <Content Include="Views\MyPosts\Delete.cshtml" />
+=======-->
+    <Content Include="Views\Manage\ProfileAdmin.cshtml" />
+    <Content Include="Views\Shared\_PartialLayoutPage.cshtml" />
+    <Content Include="Views\Manage\ChangeProfilePic.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Categories\" />
@@ -368,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709171635483_AddNameToApplicationUser.resx">
       <DependentUpon>201709171635483_AddNameToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709201238395_ProfilePic.resx">
+      <DependentUpon>201709201238395_ProfilePic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,35 @@
+﻿@using WebAppMVC.Models
+@{
+    ViewBag.Title = "Paramètres du compte";
+}
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+
+
+<div class="row">
+    <div class="col-md-8">
+
+
+        <h2>Paramètres de base du compte</h2>
+        <hr />
+        
+        <p>
+            
+            @Html.Action("ChangePassword", "Manage")
+        </p>
+        <p>
+            @Html.Action("ChangeProfilePic", "Manage")
+        </p>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
