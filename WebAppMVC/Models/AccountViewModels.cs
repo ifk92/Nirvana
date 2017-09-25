@@ -79,12 +79,13 @@ namespace WebAppMVC.Models
         [Display(Name = "Confirmer le mot de passe ")]
         [Compare("Password", ErrorMessage = "Le mot de passe et le mot de passe de confirmation ne correspondent pas.")]
         public string ConfirmPassword { get; set; }
-
-
+        
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
 
+        [Display(Name = "Photo de Profil")]
+        public byte[] UserPhoto { get; set; }
     }
 
     public class ResetPasswordViewModel

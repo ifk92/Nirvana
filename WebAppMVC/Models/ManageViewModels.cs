@@ -66,6 +66,12 @@ namespace WebAppMVC.Models
         public string Number { get; set; }
     }
 
+    public class ChangeProfilePicViewModel
+    {
+        [Display(Name = "Photo de Profil")]
+        public byte[] UserPhoto { get; set; }
+    }
+
     public class VerifyPhoneNumberViewModel
     {
         [Required]
