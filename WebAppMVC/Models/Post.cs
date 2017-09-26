@@ -26,5 +26,9 @@ namespace WebAppMVC.Models
         [Required]
         public byte CategorieId { get; set; }
 
+        public DateTime Date { get; set; }
+
+        
+
     }
 }

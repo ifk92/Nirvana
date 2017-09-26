@@ -3,9 +3,49 @@
     ViewBag.Title = "Home Page";
 }
 
-<ul>
+<ul class="posts">
+
+
+
     @foreach (var post in Model)
     {
-        <li>@post.Text - @post.Utilisateur.Name</li>
-    }
+        string tps;
+
+
+
+        if (@DateTime.Now.Subtract(@post.Date).Minutes < 60)
+        {
+            tps = @DateTime.Now.Subtract(@post.Date).Minutes.ToString() + " min";
+        }
+        else
+        {
+            if (@DateTime.Now.Subtract(@post.Date).Minutes > 60*24)
+            {
+                tps = @DateTime.Now.Subtract(@post.Date).Days.ToString() + " j";
+            }
+            else
+            {
+                tps = @DateTime.Now.Subtract(@post.Date).Hours.ToString() + " h";
+            }
+
+        }
+
+        @*<li>@post.Text - @post.Utilisateur.Name - @tps</li>*@
+
+        <li>
+
+           
+                <div class="info">
+                    <span class="nom">@post.Utilisateur.Name</span>
+                    <span class="tps">@tps</span>
+                </div>
+                <div class="text">@post.Text</div>
+                <div class="categorie">@post.Categorie.Name</div>
+
+           
+
+        </li>
+
+
+        }
 </ul>
