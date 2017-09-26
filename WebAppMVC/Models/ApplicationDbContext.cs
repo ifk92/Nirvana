@@ -8,6 +8,7 @@ namespace WebAppMVC.Models
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<Categorie> Categories { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
 
 
         public ApplicationDbContext()
@@ -18,6 +19,14 @@ namespace WebAppMVC.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Favorite>()
+                .HasRequired(f => f.Post).WithMany()
+                .WillCascadeOnDelete(false);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

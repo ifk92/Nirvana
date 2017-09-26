@@ -15,6 +15,26 @@ namespace WebAppMVC.ViewModels
         [Required]
         public byte Categorie { get; set; }
 
+        public DateTime Date { get; set; }
+
+        public DateTime GetDiffTime()
+        {
+            TimeSpan ts = DateTime.Now - Date;
+            DateTime diff = new DateTime(0, 0, 0);
+            diff = diff + ts;
+
+            return diff;
+        }
+
+        public DateTime CurrentTime()
+        {
+            return DateTime.Now;
+        }
+
+
+
+
+
         public IEnumerable<Categorie> Categories { get; set; }
     }
 }

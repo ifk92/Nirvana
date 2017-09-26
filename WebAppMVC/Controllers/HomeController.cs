@@ -17,7 +17,10 @@ namespace WebAppMVC.Controllers
 
         public ActionResult Index()
         {
-            var allPosts = _context.Posts.Include(p => p.Utilisateur).ToList();
+            var allPosts = _context.Posts
+                .Include(p => p.Utilisateur)
+                .Include(p => p.Categorie)
+                .ToList();
 
             return View(allPosts);
         }
