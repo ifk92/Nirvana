@@ -42,11 +42,13 @@ namespace WebAppMVC.Controllers
             {
                 UtilisateurId = User.Identity.GetUserId(),
                 Text = viewModel.Text,
+                Date = viewModel.CurrentTime(),
                 CategorieId = viewModel.Categorie,
 
             };
 
             _context.Posts.Add(post);
+
             _context.SaveChangesAsync();
 
             return RedirectToAction("Index","Home");
